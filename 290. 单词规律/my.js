@@ -30,33 +30,45 @@ var wordPattern = function(pattern, str) {
   return true;
 };
 
-console.log(wordPattern('abba', 'dog dog dog dog'));
+//console.log(wordPattern('abba', 'dog dog dog dog'));
 
 // let arr = [1, 2, 3];
 // for (let i = 0; i < arr.length; i++) {
-//   if (arr[i] === 1) {
-//     continue;
+//   if (arr[i] === 2) {
+//     return;
+//     //continue;
 //   }
 //   console.log(arr[i]);
 // }
 
 // for (let i in arr) {
-//   if (arr[i] === 1) {
-//     continue;
+//   if (arr[i] === 2) {
+//     return;
+//     //continue;
 //   }
 //   console.log(arr[i]);
 // }
 
 // for (let item of arr) {
-//   if (item === 1) {
-//     continue;
+//   if (item === 2) {
+//     return;
+//     //continue;
 //   }
 //   console.log(item);
 // }
 
 // arr.forEach(item => {
-//   if (item === 1) {
-//     continue;
+//   if (item === 2) {
+//     return true;
+//     //continue;
+//   }
+//   console.log(item);
+// });
+
+// arr.some(item => {
+//   if (item === 2) {
+//     return true;
+//     //continue;
 //   }
 //   console.log(item);
 // });
