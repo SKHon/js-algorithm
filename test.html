@@ -1,31 +1,64 @@
 <html>
   <script>
-    var minDepth = function(root) {
-      if (root === null) return 0;
-      let depth = 1;
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val) {
+     *     this.val = val;
+     *     this.left = this.right = null;
+     * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {boolean}
+     */
+    var isSymmetric = function(root) {
+      if (!root) return true;
       let queue = [];
+
       queue.push(root);
       while (queue.length > 0) {
         let len = queue.length;
-        let current = queue.shift();
+
+        for (let i = 0; i < len / 2; i++) {
+          if (queue[i].val !== queue[len - i - 1].val) {
+            return false;
+          }
+        }
 
         while (len > 0) {
+          let current = queue.shift();
           if (current.left) {
             queue.push(current.left);
           }
           if (current.right) {
             queue.push(current.right);
           }
-          if (current.left === null && current.right === null) {
-            return depth;
-          }
           len--;
         }
-        depth++;
       }
-      return depth;
+      return true;
     };
 
-    console.log(minDepth({ val: 1, left: null, right: null }));
+    let test = {
+      val: 1,
+      left: {
+        val: 2,
+        left: null,
+        right: { val: 3, left: null, right: null }
+      },
+      right: {
+        val: 2,
+        left: null,
+        right: { val: 3, left: null, right: null }
+      }
+    };
+
+    console.log(isSymmetric(test));
   </script>
+  <body>
+      <form enctype="multipart/form-data" method="post" action="http://127.0.0.1:4000/upload">
+        <label for="">Image: </label>
+        <input name="file" type="file" onchange="this.parentNode.submit()"/>
+      </form>
+  </body>
 </html>
