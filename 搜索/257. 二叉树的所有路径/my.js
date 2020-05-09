@@ -9,28 +9,27 @@
  * @param {TreeNode} root
  * @return {string[]}
  */
-let queue = [];
-let s = '';
-var binaryTreePaths = function(root) {
-  if (root !== null && (root.left !== null || root.right !== null)) {
-    s += `${root.val}->`;
-  } else {
-    s += `${root.val}`;
+
+var binaryTreePaths = function(root, str = '', arr = []) {
+  if (root === null) {
+    return []
+  } 
+  if (str) {
+    str = str + '->' + root.val
   }
-  if (root.right === null && root.left === null) {
-    queue.push(s);
-    s = '';
-  }
-  if (root.left) {
-    binaryTreePaths(root.left);
-    s += `${root.val}->`;
+  else {
+    str = root.val + ''
   }
 
-  if (root.right) {
-    binaryTreePaths(root.right);
-    // s += `${root.val}->`;
+  let left = binaryTreePaths(root.left, str, arr)
+  let right = binaryTreePaths(root.right, str, arr)
+
+  if (left.length === 0 && right.length === 0) {
+    arr.push(str)
   }
+  return arr
 };
+
 
 let test = {
   val: 1,
@@ -45,6 +44,6 @@ let test = {
     right: { val: 7, left: null, right: null }
   }
 };
-binaryTreePaths(test);
-console.log(s);
-console.log(queue);
+console.log(binaryTreePaths(test))
+
+
